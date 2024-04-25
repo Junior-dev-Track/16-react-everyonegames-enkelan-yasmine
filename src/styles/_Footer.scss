@@ -1,0 +1,166 @@
+
+.footer {
+  background-color: #101010;
+  color: white;
+  padding: 2rem;
+  max-width: 120rem;
+  margin: 0 auto;
+  box-sizing: border-box;
+  hr {
+    position: relative;
+    top: 22rem;
+    border: 0.1px solid dimgrey;
+    width: 65%;
+  }
+}
+
+.trustpilotSection {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  .ratingScore {
+    font-size: 0.8rem;
+    letter-spacing: -0.04rem;
+    font-weight: 900;
+  }
+}
+
+.logoAndText {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.trustpilotLogo{
+  width: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.trustpilotStars {
+  display: flex;
+  width: 12rem;
+  height: auto;
+}
+
+.socialMediaSection, .appStoresSection {
+  img {
+    width: 2rem;
+    height: auto;
+  }
+}
+
+.sectionContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.linksSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 1.2rem;
+  a {
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration-color: #00ff00;
+      animation: glow 2s infinite;
+      cursor: pointer;
+    }
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+  }
+  20%, 80% {
+    text-shadow: 0 0 7px #00ff00, 0 0 15px #00ff00;
+  }
+  40%, 60% {
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+  }
+  50% {
+    text-shadow: 0 0 15px #00ff00, 0 0 30px #00ff00;
+  }
+}
+
+.mediaAndStoresSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: flex-end;
+
+  .socialMediaSection{
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+
+    img{
+      width: 2rem;
+      height: 2rem;
+
+      &:hover {
+        transform: scale(1.1);
+        transition: transform 0.2s;
+      }
+    }
+  }
+
+  .socialLogo{
+    object-fit: contain;
+    border-radius: 50%;
+    padding: 1rem;
+
+    &.Discord {
+      background-color: rgba(88,101,242,.2);
+    }
+
+    &.Twitter {
+      background-color: rgba(29,155,240,.2);
+    }
+
+    &.Instagram {
+      background-color: hsla(16,35%,60%,.2);
+    }
+
+    &.Facebook {;
+      background-color: rgba(24,119,242,.2);
+    }
+
+    &.Youtube {
+      background-color: rgba(226,43,38,.2);
+    }
+
+    &.Twitch {
+      background-color: rgba(152,97,255,.2);
+    }
+  }
+
+}
+.appStoresSection{
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 4rem;
+
+  img {
+
+    width: 7rem;
+    height: auto;
+  }
+}
+
+.storeLogo {
+  background-color: #1d1d1d;
+  border-radius: 0.5rem;
+  padding: 1.3rem 2.1rem;
+  width: 14.3rem;
+  height: 5.6rem;
+  border: 1px solid hsla(0,0%,100%,.2);
+  &:hover {
+    transition: background-color 0.4s;
+    background-color: #272727;
+    cursor: pointer;
+  }
+}
