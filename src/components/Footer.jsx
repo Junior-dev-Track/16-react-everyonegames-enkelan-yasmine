@@ -1,4 +1,3 @@
-import React from 'react';
 import TrustpilotLogo from '../assets/images/TrustpilotLogo.svg';
 import TrustpilotStars from '../assets/images/TrustpilotStars.svg';
 import Discord from '../assets/images/Discord.svg';
