@@ -1,14 +1,21 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import GameList from './components/GameList';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import GameList from './Services/GlobalApi';
+import './styles/Index.scss'
+import { Header } from './components/Header.jsx';
+import Footer from './components/Footer.jsx';
 
 function App() {
   return (
+      <>
       <Router>
-        <Switch>
+        <Routes>
           <Route path="/" exact component={GameList} />
-        </Switch>
+        </Routes>
       </Router>
+      <Header />
+        <Footer />
+      </>
   );
 }
 
