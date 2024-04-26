@@ -3,7 +3,7 @@ import LogoGames from "../asset/images/Pandagame.svg";
 import { BiBasket } from "react-icons/bi";
 import { FaRegUserCircle } from "react-icons/fa";
 
-// import { IoSearch } from "react-icons/io5";
+import { IoSearch } from "react-icons/io5";
 
 const Header = () => {
     return (
@@ -11,8 +11,10 @@ const Header = () => {
             <img src={LogoGames} alt="Logo du site" className="LogoGames"/>
             <nav className="navbar navbar-light bg-light">
                 <form className="form-inline">
-                    <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"/>
-                    <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <input className="form-control mr-sm-2" type="search" placeholder=" " aria-label="Search"/>
+                    <button className="BtnSearch" type="submit">
+                        <IoSearch />
+                    </button>
                 </form>
             </nav>
             <div className="HeaderRight">
