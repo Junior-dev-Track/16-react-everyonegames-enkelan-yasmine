@@ -1,13 +1,13 @@
-import TrustpilotLogo from '../assets/images/TrustpilotLogo.svg';
-import TrustpilotStars from '../assets/images/TrustpilotStars.svg';
-import Discord from '../assets/images/Discord.svg';
-import Twitter from '../assets/images/Twitter.svg';
-import Instagram from '../assets/images/Instagram.svg';
-import Facebook from '../assets/images/Facebook.svg';
-import Youtube from '../assets/images/Youtube.svg';
-import Twitch from '../assets/images/Twitch.svg';
-import AppStore from '../assets/images/AppStore.svg';
-import GooglePlay from '../assets/images/GooglePlay.svg';
+import TrustpilotLogo from '../asset/images/TrustpilotLogo.svg';
+import TrustpilotStars from '../asset/images/TrustpilotStars.svg';
+import Discord from '../asset/images/Discord.svg';
+import Twitter from '../asset/images/Twitter.svg';
+import Instagram from '../asset/images/Instagram.svg';
+import Facebook from '../asset/images/Facebook.svg';
+import Youtube from '../asset/images/Youtube.svg';
+import Twitch from '../asset/images/Twitch.svg';
+import AppStore from '../asset/images/AppStore.svg';
+import GooglePlay from '../asset/images/GooglePlay.svg';
 
 const Footer = () => {
     return (
