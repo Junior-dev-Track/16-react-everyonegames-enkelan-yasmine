@@ -9,10 +9,10 @@ function App() {
     return (
         <>
             <Router>
+                <Header />
                 <Routes>
                     <Route path="/"  element={<GlobalApi />} />
                 </Routes>
-                <Header />
                 <Footer />
             </Router>
         </>
