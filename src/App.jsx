@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import GameList from './Services/GlobalApi';
 import './styles/Index.scss'
 import { Header } from './components/Header.jsx';
-import Footer from './components/Footer.jsx';
+import { Footer } from './components/Footer.jsx';
 
 function App() {
   return (
