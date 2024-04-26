@@ -1,4 +1,19 @@
 .header {
-  max-width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #201F1F;
+
+}
+element.style {
+  color: white;
+  padding: 0 15px;
+}
+.LogoGames {
+  height: 120px;
+  width: 120px;
+}
+
+button {
 
 }
