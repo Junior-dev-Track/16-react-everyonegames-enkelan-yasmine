@@ -5,13 +5,30 @@
   background-color: #201F1F;
 
 }
+.BtnSearch {
+    display: inline-block;
+    background-color: greenyellow; /* Couleur de fond */
+    border: none; /* Supprimer la bordure */
+    border-radius: 80px; /* Définir le rayon de la bordure pour rendre le bouton rond */
+    color: white; /* Couleur du texte */
+    text-align: center; /* Centrer le texte */
+    font-size: 19px;
+    height: 100%; /* Taille de la police */
+    padding: 10px 14px; /* Espace à l'intérieur du bouton */
+    text-decoration: none; /* Supprimer la soulignement du texte */
+    z-index: 11;
+  }
+.HeaderRight {
+  display: flex;
+
+}
 element.style {
   color: white;
   padding: 0 15px;
 }
 .LogoGames {
-  height: 120px;
-  width: 120px;
+  height: 100px;
+  width: 100px;
 }
 
 button {
