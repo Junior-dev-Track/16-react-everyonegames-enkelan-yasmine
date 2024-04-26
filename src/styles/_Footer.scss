@@ -1,16 +1,13 @@
-
 .footer {
+  width: 100%;
   background-color: #101010;
   color: white;
-  padding: 2rem;
-  max-width: 120rem;
-  margin: 0 auto;
-  box-sizing: border-box;
-  hr {
-    position: relative;
-    top: 22rem;
-    border: 0.1px solid dimgrey;
-    width: 65%;
+
+  .footer-content {
+    padding: 2rem;
+    max-width: 120rem;
+    margin: 0 auto;
+    box-sizing: border-box;
   }
 }
 
