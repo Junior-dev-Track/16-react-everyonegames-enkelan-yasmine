@@ -1,0 +1,95 @@
+.SearchBackground {
+    background-color: #201F1F;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.SearchContainer {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background: #fff;
+    border-radius: 60px;
+    transition: 0.5s;
+    box-shadow: 0 0 0 5px #201F1F;
+    overflow: hidden;
+
+    &.active {
+        width: 360px;
+    }
+
+    .SearchIcon {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 60px;
+        height: 60px;
+        color: #000;
+        border-radius: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        cursor: pointer;
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        &::after {
+            background: #fff;
+            transition: 0.5s;
+        }
+    }
+
+    .SearchInput {
+        position: relative;
+        width: 300px;
+        height: 60px;
+        left: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        input {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            outline: none;
+            font-size: 18px;
+        }
+    }
+
+    .SearchClear {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 15px;
+        height: 15px;
+        right: 15px;
+        cursor: pointer;
+
+        &::before,
+        &::after {
+            position: absolute;
+            content: "";
+            width: 1px;
+            height: 15px;
+            background: #999;
+        }
+
+        &::before {
+            transform: rotate(45deg);
+        }
+
+        &::after {
+            transform: rotate(315deg);
+        }
+    }
+}
