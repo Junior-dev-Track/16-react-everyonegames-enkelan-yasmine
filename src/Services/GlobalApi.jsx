@@ -1,29 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { GenreList } from "../components/GenreList.jsx";
+import { TrendingGame } from "../components/TrendingGame.jsx";
 
 const API_KEY = import.meta.env.VITE_APP_RAWG_API_KEY;
-console.log(API_KEY);
+
 function GlobalApi() {
     const [data, setData] = useState(null);
+    const [gameMovies, setGameMovies] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`https://api.rawg.io/api/genres?key=${API_KEY}`);
+                const response = await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}`);
                 setData(response.data.results);
-                console.log(response)
             } catch (error) {
                 console.error('Error fetching data: ', error);
             }
         };
-        console.log(import.meta.env.VITE_APP_RAWG_API_KEY) // "123
         fetchData();
+    }, []);
+
+    useEffect(() => {
+        const fetchGameMovies = async () => {
+            const gameId = 'your_game_id_here'; // replace with your game id
+            try {
+                const response = await axios.get(`https://api.rawg.io/api/games/${gameId}/movies?key=${API_KEY}`);
+                setGameMovies(response.data.results);
+            } catch (error) {
+                console.error('Error fetching game movies: ', error);
+            }
+        };
+        fetchGameMovies();
     }, []);
 
     return (
         <div>
-            <GenreList games={data} />
+            <TrendingGame games={data} gameMovies={gameMovies} />
         </div>
     );
 }
