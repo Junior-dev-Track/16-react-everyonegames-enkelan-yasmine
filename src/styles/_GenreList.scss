@@ -28,6 +28,11 @@ h2 {
   height: 250px;
   object-fit: cover;
   border-radius: 1rem;
+  z-index: 9998;
+  transition: transform 0.2s ease-in-out;
+  &:hover {
+    transform: scale(1.05);
+  }
 }
 
 .game h3 {
@@ -47,6 +52,11 @@ h2 {
   height: 100%;
   object-fit: cover;
   border-radius: 1rem;
+  z-index: 9999;
+  //transition: transform 0.3s ease;
+  //&:hover {
+  //  transform: scale(1.05);
+  //}
 }
 
 
@@ -77,7 +87,7 @@ h2 {
   margin-top: 1em;
   border: 0;
   border-top: 1px solid lawngreen;
-  width: 35%; /* Adjust this value to your desired width */
+  width: 35%;
   margin-left: auto;
   margin-right: auto;
 }

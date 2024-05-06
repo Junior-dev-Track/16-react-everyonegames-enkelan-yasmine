@@ -5,24 +5,9 @@ import { GameMovies } from "./GameMovies.jsx";
 
 const API_KEY = import.meta.env.VITE_APP_RAWG_API_KEY;
 
-function TrendingGame() {
-  const [games, setGames] = useState([]);
+function TrendingGame({ games, gameMovies }) {
   const [hoveredGameId, setHoveredGameId] = useState(null);
   const [showMore, setShowMore] = useState(false);
-
-  useEffect(() => {
-    const fetchGames = async () => {
-      try {
-        const response = await axios.get(
-          `https://api.rawg.io/api/games?key=${API_KEY}`,
-        );
-        setGames(response.data.results);
-      } catch (error) {
-        console.error("Error fetching games: ", error);
-      }
-    };
-    fetchGames();
-  }, []);
 
   const handleMouseEnter = (id) => {
     setHoveredGameId(id);
@@ -33,7 +18,7 @@ function TrendingGame() {
   };
 
   return (
-    <div>
+    <>
       <div className="gameSectionList">
         <h2>Trending Games</h2>
         <div className="game-list">
@@ -45,8 +30,16 @@ function TrendingGame() {
                   onMouseEnter={() => handleMouseEnter(game.id)}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <img src={game.background_image} alt={game.name} />
-                  {hoveredGameId === game.id && <GameMovies gameId={game.id} />}
+                  <picture>
+                    <source
+                      srcSet={game.background_image}
+                      media="(min-width: 800px)"
+                    />
+                    <img src={game.background_image} alt={game.name} />
+                  </picture>
+                  {hoveredGameId === game.id && (
+                    <GameMovies gameId={game.id} gameMovies={gameMovies} />
+                  )}
                 </div>
                 <div
                   style={{
@@ -67,7 +60,7 @@ function TrendingGame() {
           </button>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

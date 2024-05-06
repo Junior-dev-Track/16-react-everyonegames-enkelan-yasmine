@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import PC from "../asset/images/PC.png";
-import Playstation from "../asset/images/Playstation.svg";
-import Xbox from "../asset/images/Xbox.svg";
+import {
+  FaPlaystation,
+  FaXbox,
+  FaWindows,
+  FaApple,
+  FaLinux,
+} from "react-icons/fa";
+import { v4 as uuid } from "uuid";
 
 const API_KEY = import.meta.env.VITE_APP_RAWG_API_KEY;
 
@@ -23,32 +28,24 @@ function PlatformList() {
     fetchPlatforms();
   }, []);
 
-  const getPlatformLogo = (platformName) => {
-    switch (platformName.toLowerCase()) {
-      case "pc":
-        return PC;
-      case "playstation":
-        return Playstation;
-      case "xbox":
-        return Xbox;
-      default:
-        return null;
-    }
-  };
-
   return (
-    <div style={{ display: "flex", alignItems: "flex-start" }}>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "flex-start",
+        color: "white",
+      }}
+    >
       {platforms.slice(0, 3).map((platform) => (
-        <div key={platform.id}>
-          <img
-            src={getPlatformLogo(platform.name)}
-            alt={platform.name}
-            style={{ width: "25px", height: "25px" }}
-          />
+        <div key={uuid()} style={{ marginRight: "5px" }}>
+          {platform.id === 1 && <FaWindows size={20} />}
+          {platform.id === 2 && <FaPlaystation size={20} />}
+          {platform.id === 3 && <FaXbox size={20} />}
+          {platform.id === 5 && <FaApple size={20} />}
+          {platform.id === 6 && <FaLinux size={20} />}
         </div>
       ))}
     </div>
   );
 }
-
 export { PlatformList };
