@@ -1,8 +1,32 @@
-.SearchBackground {
-    background-color: #201F1F;
+.SearchResults {
     display: flex;
     justify-content: center;
+}
+li {
+    list-style-type: none;
+}
+.SearchResults {
+    grid-column: 1 /-1;
+    padding: 10px;
+    border-radius: 18px;
+    overflow-y: scroll;
+    max-height: 15rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.GameListResult {
+    padding: 5px 10px;
+    background-color: lime;
+
+}
+.SearchBackground {
+    background-color: #201F1F;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .SearchContainer {
@@ -16,7 +40,7 @@
     overflow: hidden;
 
     &.active {
-        width: 360px;
+        width: 50rem;
     }
 
     .SearchIcon {
@@ -52,7 +76,7 @@
 
     .SearchInput {
         position: relative;
-        width: 300px;
+        width: 44rem;
         height: 60px;
         left: 60px;
         display: flex;
@@ -96,4 +120,9 @@
             transform: rotate(315deg);
         }
     }
+    .result_list {
+        background: white;
+        display: flex;
+    }
+
 }

@@ -4,6 +4,7 @@ import { GlobalApi }  from "./Services/GlobalApi.jsx";
 import './styles/Index.scss'
 import { Header } from './components/Header.jsx';
 import { Footer } from './components/Footer.jsx';
+import {SearchResultsList} from "./components/SearchResultsList.jsx";
 
 function App() {
     return (

@@ -1,4 +1,3 @@
-import '../styles/InputWithHover.scss';
 import { useState } from 'react';
 import { FaSearch } from "react-icons/fa";
 import axios from 'axios';
@@ -9,16 +8,17 @@ function InputWithHover() {
     const [games, setGames] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
+    const API_KEY = import.meta.env.VITE_APP_RAWG_API_KEY;
 
     const toggleSearch = () => {
         setIsActive(!isActive);
     };
 
     const handleSearch = async () => {
-        if (!searchTerm) return;  // Evite les recherches vides
+        if (!searchTerm) return;
         setIsLoading(true);
         try {
-            const response = await axios.get(`https://api.rawg.io/api/games?key=TUA_CHIAVE_API&search=${searchTerm}`);
+            const response = await axios.get(`https://api.rawg.io/api/games?search=${searchTerm}&key=${API_KEY}`);
             setGames(response.data.results);
             setIsLoading(false);
         } catch (error) {
@@ -28,12 +28,12 @@ function InputWithHover() {
     };
 
     const handleClick = () => {
-        setSearchTerm(''); // Manipulation de l'état plutôt que du DOM
+        setSearchTerm('');
     };
 
     return (
         <div className={"SearchBackground"}>
-            <div className={`SearchContainer ${isActive ? 'active' : ''}`}>
+            <div className={`SearchContainer ${isActive? 'active' : ''}`}>
                 <div className={'SearchIcon'}>
                     <FaSearch className={'ScaleIcon'} size={'15px'} color={'#201F1F'} onClick={toggleSearch} />
                 </div>
@@ -50,11 +50,15 @@ function InputWithHover() {
             </div>
             {isLoading && <p>Loading...</p>}
             {error && <p>{error}</p>}
-            <div>
-                {games.map(game => (
-                    <div key={game.id}>{game.name}</div>
-                ))}
-            </div>
+            {games.length > 0 && (
+                <div className="SearchResults">
+                    {games.map(game => (
+                        <article className={'GameListResult'} key={game.id}>
+                            <h3>{game.name}</h3>
+                        </article>
+                    ))}
+                </div>
+            )}
         </div>
     );
 }

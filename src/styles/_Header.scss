@@ -1,22 +1,27 @@
 .header {
   height: 18rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   background-color: #201F1F;
-
+}
+.LogoGames {
+   height: 100px;
+   width: 100px;
+ }
+.LogoGames, .SearchBackground, .HeaderRight {
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
 }
 
 element.style {
   color: white;
   padding: 0 15px;
 }
-.LogoGames {
-  height: 100px;
-  width: 100px;
-}
+
 .HeaderRight {
    display: flex;
+  justify-content: flex-end;
 
  }
 .IconProfil, .IconBasket {
