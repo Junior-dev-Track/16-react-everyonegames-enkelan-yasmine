@@ -1,27 +1,12 @@
 .header {
+  height: 18rem;
   display: flex;
   align-items: center;
   justify-content: space-around;
   background-color: #201F1F;
 
 }
-.BtnSearch {
-    display: inline-block;
-    background-color: greenyellow; /* Couleur de fond */
-    border: none; /* Supprimer la bordure */
-    border-radius: 80px; /* Définir le rayon de la bordure pour rendre le bouton rond */
-    color: white; /* Couleur du texte */
-    text-align: center; /* Centrer le texte */
-    font-size: 19px;
-    height: 100%; /* Taille de la police */
-    padding: 10px 14px; /* Espace à l'intérieur du bouton */
-    text-decoration: none; /* Supprimer la soulignement du texte */
-    z-index: 11;
-  }
-.HeaderRight {
-  display: flex;
 
-}
 element.style {
   color: white;
   padding: 0 15px;
@@ -30,7 +15,14 @@ element.style {
   height: 100px;
   width: 100px;
 }
+.HeaderRight {
+   display: flex;
 
-button {
-
+ }
+.IconProfil, .IconBasket {
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    transition: transform 0.2s;
+  }
 }
