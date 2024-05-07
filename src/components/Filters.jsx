@@ -1,14 +1,12 @@
-import { PlatformSelect } from "./PlatformSelect.jsx";
-import { SystemSelect } from "./SystemSelect.jsx";
 import { GenreSelect } from "./GenreSelect.jsx";
+import {Link} from "react-router-dom";
 
 const Filters = () => {
   return (
     <section>
       <div className={"GridFilter"}>
-        <PlatformSelect />
-        <SystemSelect />
         <GenreSelect />
+          <Link to="/games">Voir tous les jeux</Link>
       </div>
     </section>
   );

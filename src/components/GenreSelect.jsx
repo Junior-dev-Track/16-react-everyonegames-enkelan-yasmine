@@ -3,46 +3,66 @@ import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 
 function GenreSelect() {
-    const [games, setGames] = useState([]);
+    const [platforms, setPlatforms] = useState([]);
+    const [genres, setGenres] = useState([]);
+    const [selectedPlatform, setSelectedPlatform] = useState('');
     const [selectedGenre, setSelectedGenre] = useState('');
+    const [games, setGames] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        axios.get('https://api.rawg.io/api/games')
-            .then(response => {
-                setGames(response.data.results);
-            })
-            .catch(error => {
+        const fetchData = async () => {
+            try {
+                const platformsResponse = await axios.get('https://api.rawg.io/api/platforms');
+                const genresResponse = await axios.get('https://api.rawg.io/api/genres');
+                setPlatforms(platformsResponse.data.results); // Assumer que les données sont paginées
+                setGenres(genresResponse.data.results);
+            } catch (error) {
                 console.error('Erreur lors de la récupération des données:', error);
-            });
+                setError('Une erreur est survenue lors de la récupération des données.');
+            }
+        };
+
+        fetchData();
     }, []);
 
-    const handleGenreChange = (event) => {
-        setSelectedGenre(event.target.value);
-    };
-
-    // Filtrer les jeux par genre
-    const filteredGames = games.filter(game =>
-        game.genres.some(genre => genre.name.toLowerCase() === selectedGenre)
-    );
-
+    useEffect(() => {
+        if (selectedPlatform && selectedGenre) {
+            setLoading(true);
+            axios.get(`https://api.rawg.io/api/games?key=YOUR_API_KEY&platforms=${selectedPlatform}&genres=${selectedGenre}`)
+                .then(response => {
+                    setGames(response.data.results);
+                    setLoading(false);
+                })
+                .catch(error => {
+                    console.error('Erreur lors de la récupération des jeux:', error);
+                    setError('Impossible de récupérer les jeux.');
+                    setLoading(false);
+                });
+        }
+    }, [selectedPlatform, selectedGenre]);
 
     return (
         <div>
-            <Form.Select aria-label="Default select example" onChange={handleGenreChange}>
-                <option value="">Tous les genres</option>
-                {['Action', 'Adventure', 'Puzzle'].map((genre, index) => (
-                    <option key={index} value={genre.toLowerCase()}>
-                        {genre}
-                    </option>
-                ))}
-            </Form.Select>
-            <ul>
-                {filteredGames.map(game => (
-                    <li key={game.id}>{game.name}</li>
-                ))}
-            </ul>
+            {error && <p>{error}</p>}
+            <Form>
+                <Form.Select value={selectedPlatform} onChange={e => setSelectedPlatform(e.target.value)}>
+                    <option value="">Select a Platform</option>
+                    {platforms.map(platform => <option key={platform.id} value={platform.id}>{platform.name}</option>)}
+                </Form.Select>
+                <Form.Select value={selectedGenre} onChange={e => setSelectedGenre(e.target.value)}>
+                    <option value="">Select a Genre</option>
+                    {genres.map(genre => <option key={genre.id} value={genre.id}>{genre.name}</option>)}
+                </Form.Select>
+            </Form>
+            {loading ? <p>Loading...</p> : (
+                <ul>
+                    {games.map(game => <li key={game.id}>{game.name}</li>)}
+                </ul>
+            )}
         </div>
     );
 }
 
-export { GenreSelect };
+export {GenreSelect};
