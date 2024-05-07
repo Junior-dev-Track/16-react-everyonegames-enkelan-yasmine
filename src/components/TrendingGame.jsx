@@ -2,19 +2,21 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { PlatformList } from "./PlatformList.jsx";
 import { GameMovies } from "./GameMovies.jsx";
+import gameTrailers from "./gameTrailers.js";
 
-const API_KEY = import.meta.env.VITE_APP_RAWG_API_KEY;
-
-function TrendingGame({ games, gameMovies }) {
+function TrendingGame({ games }) {
   const [hoveredGameId, setHoveredGameId] = useState(null);
+  const [isHovered, setIsHovered] = useState(false);
   const [showMore, setShowMore] = useState(false);
 
   const handleMouseEnter = (id) => {
     setHoveredGameId(id);
+    setIsHovered(true);
   };
 
   const handleMouseLeave = () => {
     setHoveredGameId(null);
+    setIsHovered(false);
   };
 
   return (
@@ -30,15 +32,13 @@ function TrendingGame({ games, gameMovies }) {
                   onMouseEnter={() => handleMouseEnter(game.id)}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <picture>
-                    <source
-                      srcSet={game.background_image}
-                      media="(min-width: 800px)"
+                  {isHovered && hoveredGameId === game.id ? (
+                    <GameMovies
+                      gameId={game.id}
+                      gameMovies={gameTrailers[game.id]}
                     />
+                  ) : (
                     <img src={game.background_image} alt={game.name} />
-                  </picture>
-                  {hoveredGameId === game.id && (
-                    <GameMovies gameId={game.id} gameMovies={gameMovies} />
                   )}
                 </div>
                 <div

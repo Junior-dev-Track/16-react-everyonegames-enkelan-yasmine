@@ -5,6 +5,17 @@ import { PlatformList } from "../components/PlatformList.jsx";
 
 const API_KEY = import.meta.env.VITE_APP_RAWG_API_KEY;
 
+export async function fetchData() {
+  try {
+    const response = await axios.get(
+      `https://api.rawg.io/api/games?key=${API_KEY}`,
+    );
+    return response.data.results;
+  } catch (error) {
+    console.error("Error fetching data: ", error);
+  }
+}
+
 function GlobalApi({ gameId }) {
   const [data, setData] = useState(null);
   const [gameMovies, setGameMovies] = useState(null);
