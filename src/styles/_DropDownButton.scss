@@ -1,16 +1,19 @@
-.dropdown-toggle {
-  background-color: #007bff!important; // Changez la couleur de fond du bouton
-  color: white!important; // Changez la couleur du texte
+.FilterContainer {
+  display: flex;
+  justify-content: center;
 }
 
-.dropdown-menu {
-  background-color: #f8f9fa!important; // Changez la couleur d'arrière-plan du menu déroulant
-  border-color: #6c757d!important; // Changez la couleur de la bordure
+select {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 8px;
+  margin: 1rem 9rem;
+  border-radius: 4px;
 }
 
-.dropdown-item {
-  &:hover {
-    background-color: #007bff!important; // Changez la couleur d'arrière-plan lors du survol
-    color: white!important; // Changez la couleur du texte lors du survol
-  }
+
+option {
+  background-color: black;
+  color: white;
 }
