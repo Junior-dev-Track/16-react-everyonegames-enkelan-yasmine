@@ -21,7 +21,10 @@ function GenreSelect() {
     };
 
     // Filtrer les jeux par genre
-    const filteredGames = games.filter(game => game.released_on.includes(selectedGenre));
+    const filteredGames = games.filter(game =>
+        game.genres.some(genre => genre.name.toLowerCase() === selectedGenre)
+    );
+
 
     return (
         <div>
