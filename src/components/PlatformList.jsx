@@ -11,22 +11,24 @@ import { v4 as uuid } from "uuid";
 
 const API_KEY = import.meta.env.VITE_APP_RAWG_API_KEY;
 
-function PlatformList() {
-  const [platforms, setPlatforms] = useState([]);
+function PlatformList({ gameId }) {
+  const [game, setGame] = useState(null);
 
   useEffect(() => {
-    const fetchPlatforms = async () => {
+    const fetchGame = async () => {
       try {
         const response = await axios.get(
-          `https://api.rawg.io/api/platforms/lists/parents?key=${API_KEY}`,
+          `https://api.rawg.io/api/games/${gameId}?key=${API_KEY}`,
         );
-        setPlatforms(response.data.results);
+        setGame(response.data);
       } catch (error) {
-        console.error("Error fetching platforms: ", error);
+        console.error("Error fetching game: ", error);
       }
     };
-    fetchPlatforms();
-  }, []);
+    if (gameId) {
+      fetchGame();
+    }
+  }, [gameId]);
 
   return (
     <div
@@ -36,13 +38,13 @@ function PlatformList() {
         color: "white",
       }}
     >
-      {platforms.slice(0, 3).map((platform) => (
+      {game?.parent_platforms?.map((platform) => (
         <div key={uuid()} style={{ marginRight: "5px" }}>
-          {platform.id === 1 && <FaWindows size={20} />}
-          {platform.id === 2 && <FaPlaystation size={20} />}
-          {platform.id === 3 && <FaXbox size={20} />}
-          {platform.id === 5 && <FaApple size={20} />}
-          {platform.id === 6 && <FaLinux size={20} />}
+          {platform.platform.id === 1 && <FaWindows size={20} />}
+          {platform.platform.id === 2 && <FaPlaystation size={20} />}
+          {platform.platform.id === 3 && <FaXbox size={20} />}
+          {platform.platform.id === 5 && <FaApple size={20} />}
+          {platform.platform.id === 6 && <FaLinux size={20} />}
         </div>
       ))}
     </div>

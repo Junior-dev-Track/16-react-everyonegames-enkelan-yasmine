@@ -49,7 +49,7 @@ function TrendingGame({ games, gameMovies }) {
                   }}
                 >
                   <h3>{game.name}</h3>
-                  <PlatformList />
+                  <PlatformList gameId={game.id} />
                 </div>
               </article>
             ))}

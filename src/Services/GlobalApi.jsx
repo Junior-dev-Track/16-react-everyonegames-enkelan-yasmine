@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { TrendingGame } from "../components/TrendingGame.jsx";
+import { PlatformList } from "../components/PlatformList.jsx";
 
 const API_KEY = import.meta.env.VITE_APP_RAWG_API_KEY;
 
@@ -41,6 +42,9 @@ function GlobalApi({ gameId }) {
   return (
     <div>
       <TrendingGame games={data} gameMovies={gameMovies} />
+      {data?.map((game) => (
+        <div key={game.id}></div>
+      ))}
     </div>
   );
 }
