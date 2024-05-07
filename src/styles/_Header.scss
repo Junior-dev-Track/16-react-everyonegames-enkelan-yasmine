@@ -1,42 +1,25 @@
-.header {
+
+.header nav {
   display: flex;
-  justify-content: space-around;
-  background-color: #201F1F;
-}
-nav {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-bottom: 80px;
+  padding-top: 20px;
 }
-.logo {
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-}
+
 .LogoGames {
    height: 100px;
    width: 100px;
  }
 .LogoGames, .SearchBackground {
-  padding: 20px;
+  display: flex;
+  text-align: center;
+  margin-top: 20px;
 }
 
-element.style {
-  color: white;
-  padding: 0 15px;
-}
-
-.HeaderRight {
-   display: flex;
-  gap: 1.2rem;
-  justify-content: center;
-  flex-wrap: nowrap;
-
-
- }
 .IconProfil, .IconBasket {
-    gap: 1rem;
   &:hover {
     cursor: pointer;
     transform: scale(1.1);

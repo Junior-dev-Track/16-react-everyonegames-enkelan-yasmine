@@ -24,6 +24,8 @@
 }
 
 .carousel-root {
+  position: relative;
+  z-index: 0;
   margin: 0 auto;
   max-width: 1000px;
 }
