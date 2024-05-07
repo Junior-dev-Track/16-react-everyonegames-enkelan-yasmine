@@ -1,0 +1,16 @@
+.dropdown-toggle {
+  background-color: #007bff!important; // Changez la couleur de fond du bouton
+  color: white!important; // Changez la couleur du texte
+}
+
+.dropdown-menu {
+  background-color: #f8f9fa!important; // Changez la couleur d'arrière-plan du menu déroulant
+  border-color: #6c757d!important; // Changez la couleur de la bordure
+}
+
+.dropdown-item {
+  &:hover {
+    background-color: #007bff!important; // Changez la couleur d'arrière-plan lors du survol
+    color: white!important; // Changez la couleur du texte lors du survol
+  }
+}

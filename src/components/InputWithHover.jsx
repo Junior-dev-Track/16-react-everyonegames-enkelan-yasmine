@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { FaSearch } from "react-icons/fa";
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+
 
 function InputWithHover() {
     const [isActive, setIsActive] = useState(false);
@@ -54,7 +56,9 @@ function InputWithHover() {
                 <div className="SearchResults">
                     {games.map(game => (
                         <article className={'GameListResult'} key={game.id}>
-                            <h3>{game.name}</h3>
+                            <Link to={`/game/${game.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                <h3>{game.name}</h3>
+                            </Link>
                         </article>
                     ))}
                 </div>

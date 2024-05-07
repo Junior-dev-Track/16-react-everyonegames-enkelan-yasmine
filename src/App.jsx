@@ -5,20 +5,21 @@ import "./styles/Index.scss";
 import { Header } from "./components/Header.jsx";
 import { Footer } from "./components/Footer.jsx";
 import { GameCarousel } from "./components/GameCarousel.jsx";
+import { GameDetailsPage } from './pages/GameDetailsPage.jsx';
 
 function App() {
-  return (
-    <>
-      <Router>
-        <Header />
-        <GameCarousel />
-        <Routes>
-          <Route path="/" element={<GlobalApi />} />
-        </Routes>
-        <Footer />
-      </Router>
-    </>
-  );
+    return (
+        <>
+            <Router>
+                <Header/>
+                <GameCarousel/>
+                <Routes>
+                    <Route path="/" element={<GlobalApi/>}/>
+                    <Route path="/game/:id" element={<GameDetailsPage/>}/>
+                </Routes>
+                <Footer/>
+            </Router>
+        </>
+    );
 }
-
 export default App;
