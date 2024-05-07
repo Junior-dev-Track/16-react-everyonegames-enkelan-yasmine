@@ -12,30 +12,30 @@ import { SystemSelect } from "./components/SystemSelect.jsx";
 import { GameDetails } from "./components/GameDetails.jsx";
 
 function App() {
-    return (
-        <>
-            <Router>
-                <Header />
-                <Routes>
-                    <Route path="/game/:id" element={<GameDetails />} />
-                    <Route
-                        path="/"
-                        element={
-                            <>
-                                <GameCarousel />
-                                <GlobalApi />
-                            </>
-                        }
-                    />
-                </Routes>
-                <div className={"FilterContainer"}>
-                    <GenreSelect />
-                    <PlatformSelect />
-                    <SystemSelect />
-                </div>
-                <Footer />
-            </Router>
-        </>
-    );
+  return (
+    <>
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/game/:id" element={<GameDetails />} />
+          <Route
+            path="/"
+            element={
+              <>
+                <GameCarousel />
+                <GlobalApi />
+              </>
+            }
+          />
+        </Routes>
+        <div className={"FilterContainer"}>
+          <GenreSelect />
+          <PlatformSelect />
+          <SystemSelect />
+        </div>
+        <Footer />
+      </Router>
+    </>
+  );
 }
 export default App;
