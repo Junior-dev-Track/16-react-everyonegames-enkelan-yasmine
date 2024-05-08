@@ -9,13 +9,19 @@ function InputWithHover() {
   const [games, setGames] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const searchResultsRef = useRef(null);
   const API_KEY = import.meta.env.VITE_APP_RAWG_API_KEY;
 
   const searchRef = useRef(null);
 
   useEffect(() => {
     function handleClickOutside(event) {
-      if (searchRef.current && !searchRef.current.contains(event.target)) {
+      if (
+        searchRef.current &&
+        !searchRef.current.contains(event.target) &&
+        searchResultsRef.current &&
+        !searchResultsRef.current.contains(event.target)
+      ) {
         setIsActive(false);
         setGames([]);
       }
@@ -25,7 +31,7 @@ function InputWithHover() {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [searchRef]);
+  }, [searchRef, searchResultsRef]);
 
   useEffect(() => {
     if (searchTerm) {
