@@ -49,21 +49,18 @@ function InputWithHover() {
 
   const handleSearch = async () => {
     if (!searchTerm) return;
-    if (cache[searchTerm]) {
-      setGames(cache[searchTerm]);
-      return;
-    }
     setIsLoading(true);
     try {
       const response = await axios.get(
         `https://api.rawg.io/api/games?search=${searchTerm}&key=${API_KEY}`,
         { cancelToken: source.token },
       );
-      setGames(response.data.results);
-      setCache((prevCache) => ({
-        ...prevCache,
-        [searchTerm]: response.data.results,
-      }));
+      const sortedGames = response.data.results.sort((a, b) => {
+        if (a.name.toLowerCase() === searchTerm.toLowerCase()) return -1;
+        if (b.name.toLowerCase() === searchTerm.toLowerCase()) return 1;
+        return 0;
+      });
+      setGames(sortedGames);
       setIsLoading(false);
     } catch (error) {
       if (axios.isCancel(error)) return;
@@ -77,12 +74,9 @@ function InputWithHover() {
       if (searchTerm) {
         handleSearch();
       }
-    }, 500);
+    }, 500); // delay in ms
 
-    return () => {
-      clearTimeout(delayDebounceFn);
-      source.cancel();
-    };
+    return () => clearTimeout(delayDebounceFn);
   }, [searchTerm]);
 
   const handleClick = () => {
